@@ -33,7 +33,7 @@
         'note_title' => $note_title,
         'note_text' => $note_text,
         'note_date' => $note_date,
-        'note_folder' => $folder
+        'note_folder' => $folders
     ];
 
     $stmt = $pdo->prepare($query);
