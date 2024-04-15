@@ -6,7 +6,7 @@
     $note_title = $_POST['note_title'] ?? null;
     $note_text = $_POST['note_text'] ?? null;
     $folder = $_POST['folder'] ?? null;
-    $note_date = date("Y-m-d");
+    $note_date = date("Y-m-d H:i:s");
 
 
 
@@ -33,7 +33,7 @@
         'note_title' => $note_title,
         'note_text' => $note_text,
         'note_date' => $note_date,
-        'note_folder' => $folders
+        'note_folder' => $folder
     ];
 
     $stmt = $pdo->prepare($query);

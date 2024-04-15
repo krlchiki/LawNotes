@@ -106,7 +106,7 @@ function get_notes($id_user) {
 
     $pdo = get_PDO();
 
-    $query = "SELECT * FROM note_info WHERE user_id = $id_user";
+    $query = "SELECT * FROM note_info WHERE user_id = $id_user ORDER BY `note_date` DESC";
 
     $stmt = $pdo->prepare($query);
     try{
