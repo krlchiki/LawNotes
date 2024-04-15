@@ -106,11 +106,15 @@ function get_notes($id_user) {
 
     $pdo = get_PDO();
 
-    $query = "SELECT * FROM note_info WHERE user_id = $id_user ORDER BY `note_date` DESC";
+    $query = "SELECT * FROM note_info WHERE user_id = :user_id ORDER BY `note_date` DESC";
+
+    $params = [
+        ':user_id' => $id_user
+    ];
 
     $stmt = $pdo->prepare($query);
     try{
-        $stmt ->execute();
+        $stmt ->execute($params);
     }catch (\Exception $e){
         die($e->getMessage());
     }

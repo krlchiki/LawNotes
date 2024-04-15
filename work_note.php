@@ -83,19 +83,20 @@
                   <div class="note_type">
                     Заметка
                   </div>
-                  <form class="note_form" action="../php_vendor/actions/note_delete_edit.php" method="POST"> 
+
+          <form class="note_form" action="../php_vendor/actions/note_delete.php" method="POST"> 
+
                   <div class="button_note_block_container">
                     <div class="note_edit">
+                      <!-- Кнопка редактирования -->
                       <button name="edit_note" class="edit_note_btn btn_in_header_noteblock">
                         <i class="fa-solid fa-edit"></i>
                       </button>
                     </div>
                     <div class="note_delete">
-                      <form action="../php_vendor/actions/delete_note.php" method="POST">
                         <button name="delete_note" class="delete_note_btn btn_in_header_noteblock">
                           <i class="fa-solid fa-trash"></i>
-                        </button>
-                                              
+                        </button>                                             
                     </div>
                   </div>
                 </div>
@@ -116,15 +117,17 @@
                 </div>
               </div>
             </div>   
-            <div class="hidden">     
-              <input class="hidden" name="note_id" value="<?= $note['id'] ?>" />
-              <input class="hidden" name="user_id" value="<?= $note['user_id'] ?>" />
-              <input class="hidden" name="note_title" value="<?= $note['note_title'] ?>" />
-              <input class="hidden" name="note_text" value="<?= $note['note_text'] ?>" />
-              <input class="hidden" name="note_folder" value="<?= $note['note_folder'] ?>" />
-              <input class="hidden" name="note_date" value="<?= $note['note_date'] ?>" />
-            </div>
+              <div class="hidden">     
+                <input class="hidden" name="note_id" value="<?= $note['id'] ?>" />
+                <input class="hidden" name="user_id" value="<?= $note['user_id'] ?>" />
+                <input class="hidden" name="note_title" value="<?= $note['note_title'] ?>" />
+                <input class="hidden" name="note_text" value="<?= $note['note_text'] ?>" />
+                <input class="hidden" name="note_folder" value="<?= $note['note_folder'] ?>" />
+                <input class="hidden" name="note_date" value="<?= $note['note_date'] ?>" />
+              </div>
+
           </form>
+
           <?php endforeach; ?>  
           <!-- Заметка конец   -->
         </div>
@@ -210,7 +213,6 @@
                         <label for="backColor">Цвет фона</label>
                       </div>
                     </div>
-
                     <div contenteditable="true" id="text_input" name="text_input" id="text-input">Ваш текст...</div>  
                   </div>
 

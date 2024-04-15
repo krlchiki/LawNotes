@@ -12,7 +12,6 @@
     var_dump($_POST);
 
 
-    if (isset($_POST['delete_note'])) {
       // Обработка нажатия кнопки удаления
       $pdo = get_PDO();
 
@@ -28,12 +27,4 @@
       }
 
       redirect(path: '/work_note.php');
-    } 
-    
-    
-    
-    elseif (isset($_POST['edit_note'])) {
-      // Обработка нажатия кнопки 2
-      echo "Кнопка 2 была нажата";
-    }
 
