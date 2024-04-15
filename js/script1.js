@@ -1,19 +1,39 @@
-//Открыть модальное окно
-document.getElementById('open_modal_window').addEventListener('click', function() {
-  document.getElementById('modal_create_note').classList.add('open');
-})
+let openModalCreateBtn = document.getElementById('open_modal_window');
+let modalCreateNote = document.getElementById('modal_create_note');
 
-//Закрыть модальное окно при нажатии на крестик
-document.getElementById('modal_close_btn').addEventListener('click', function() {
-  document.getElementById('modal_create_note').classList.remove('open');
-})  
+let openModalEditBtn = document.getElementById('edit_note_open_modal'); 
+let modalEditNote = document.getElementById('modal_edit_note');
+
+let modalCreateNoteCloseBtn = document.getElementById('create_modal_close_btn'); 
+let modalEditNoteCloseBtn = document.getElementById('edit_modal_close_btn'); 
+
+//Открыть модальное окно для создания 
+openModalCreateBtn.addEventListener('click', function() {
+  modalCreateNote.classList.add('open');
+});
+
+//Открыть модальное окно для редактирования
+openModalEditBtn.addEventListener('click', function() {
+  modalEditNote.classList.add('open');
+});
+
+//Закрыть модальное окно создания  при нажатии на крестик
+modalCreateNoteCloseBtn.addEventListener('click', function() {
+    modalCreateNote.classList.remove('open');
+})  ;
+
+//Закрыть модальное окно редактирования  при нажатии на крестик
+modalEditNoteCloseBtn.addEventListener('click', function() {
+  modalEditNote.classList.remove('open');
+})  ;
 
 //Закрыть модальное окно при нажатии на кнопку Esc
 window.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
-    document.getElementById('modal_create_note').classList.remove('open');
+    modalEditNote.classList.remove('open');
+    modalCreateNote.classList.remove('open');
   }
-})
+}) ;
 
 
 // Тестовое поле 
@@ -111,11 +131,11 @@ const highlighterRemover = (className) => {
 
 window.onload = initializer();
 
-//Сохранение введенного текста в инпут
+//Сохранение введенного текста в инпут при создании
 
 document.getElementById('create_note_btn').addEventListener('click', function() {
   // Получаем содержимое элемента с атрибутом contenteditable
-  var editedContent = document.getElementById('text_input').innerHTML;
+  var editedContent = document.getElementById('text_input_create_note').innerHTML;
 
   // Помещаем содержимое в скрытое поле формы
   var hiddenField = document.createElement('input');
@@ -125,3 +145,22 @@ document.getElementById('create_note_btn').addEventListener('click', function() 
   
   document.getElementById('add_note_form').appendChild(hiddenField);
 });
+
+
+
+//Сохранение введенного текста в инпут при изменении
+
+document.getElementById('edit_note_btn').addEventListener('click', function() {
+  // Получаем содержимое элемента с атрибутом contenteditable
+  var editedContent = document.getElementById('text_input_edit_note').innerHTML;
+
+  // Помещаем содержимое в скрытое поле формы
+  var hiddenField = document.createElement('input');
+  hiddenField.type = 'hidden';
+  hiddenField.name = 'note_text';
+  hiddenField.value = editedContent;
+  
+  document.getElementById('форма которая обрабатывает редактирование').appendChild(hiddenField);
+});
+
+

@@ -34,9 +34,9 @@
 
     $query = "INSERT INTO user_info (email, login, password) VALUES (:email, :login, :password)";
     $params = [
-        'email' => $email,
-        'login' => $login,
-        'password' => password_hash($password, PASSWORD_DEFAULT)
+        ':email' => $email,
+        ':login' => $login,
+        ':password' => password_hash($password, PASSWORD_DEFAULT)
     ];
 
     $stmt = $pdo->prepare($query);
