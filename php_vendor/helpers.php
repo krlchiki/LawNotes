@@ -21,6 +21,7 @@ function validation_error_message(string $field_name){
     $message = $_SESSION['validation'][$field_name] ?? '';
     unset($_SESSION['validation'][$field_name]);
     return $message;
+    
 }
 
 function add_validation_error(string $field_name, string $message){
