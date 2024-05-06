@@ -193,19 +193,19 @@
 
                       <!-- Заголовки -->
 
-                      <select id="formatBlock" class="adv_option_button">
+                      <!-- <select id="formatBlock" class="adv_option_button">
                         <option value="H1">H1</option>
                         <option value="H2">H2</option>
                         <option value="H3">H3</option>
                         <option value="H4">H4</option>
                         <option value="H5">H5</option>
                         <option value="H6">H6</option>
-                      </select>
+                      </select> -->
 
                       <!-- Шрифт -->
 
                       <select id="fontName" class="adv_option_button"></select>
-                      <select id="fontSize" class="adv_option_button"></select>
+                      <!-- <select id="fontSize" class="adv_option_button"></select> -->
 
                       <!-- Цвет -->
 
