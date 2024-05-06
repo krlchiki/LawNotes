@@ -110,7 +110,7 @@
                   <?= $note['note_title']?>
                 </div>
                 <div class="note_text">
-                  <?= $note['note_text']?>
+                  <?= substr($note['note_text'], 0, 270 ) . '...'?>
                 </div>
                 <div class="note_items_footer">
                   <div class="note_folder">
@@ -218,17 +218,17 @@
                         <label for="backColor">Цвет фона</label>
                       </div>
                     </div>
-                    <div contenteditable="true" id="text_input_create_note" name="text_input" class="text_input">Ваш текст...</div>  
+                    <div contenteditable="true" id="text_input_create_note" name="text_input" class="text_input">Ваш текст</div>  
                   </div>
 
                   <div class="choose_folder">
                     
                     <select name="folder" id="folreds">
-                      <option value="1">Все задачи</option>
-                      <option value="2">Главные задачи</option>
-                      <option value="3">Планируемые задачи</option>
-                      <option value="4">Ежедневные задачи</option>
-                      <option value="5">Второстепенные задачи</option>
+                      <option value="Все задачи">Все задачи</option>
+                      <option value="Главные задачи">Главные задачи</option>
+                      <option value="Планируемые задачи">Планируемые задачи</option>
+                      <option value="Ежедневные задачи">Ежедневные задачи</option>
+                      <option value="Второстепенные задачи">Второстепенные задачи</option>
                     </select>
 
                   </div>
