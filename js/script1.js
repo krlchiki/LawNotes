@@ -58,14 +58,17 @@ const initializer = () => {
   });
 
 };
-
+//main logic
+const modifyText = (command, defaultUi, value) => {
+  //execCommand executes command on selected text
+  document.execCommand(command, defaultUi, value);
+};
 
 optionsButtons.forEach(button => {
   button.addEventListener("click", () => {
     modifyText(button.id, false, null);
   });
 });
-
 advancedOptionButton.forEach(button => {
   button.addEventListener("change", () => {
     modifyText(button.id, false, button.value);
