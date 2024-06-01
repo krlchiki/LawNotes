@@ -16,7 +16,7 @@
     $note_text = $nested_array['note_text'];
     $note_title = $nested_array['note_title'];
     $folder = $nested_array['note_folder'];
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +37,7 @@
             </button >
             <h2>Редактирование</h2>
               <div class="form_box">
-                <form action="../php_vendor/actions/edit_note.php" id="add_note_form" method="POST">
+                <form action="../php_vendor/actions/edit_note.php" id="edit_note_form" method="POST">
 
                   <div class="note_title">
                     <input type="text" name="note_title" class="note_title_input" placeholder="Заголовок"
@@ -107,7 +107,13 @@
                         <label for="backColor">Цвет фона</label>
                       </div>
                     </div>
-                    <div contenteditable="true" id="text_input_create_note" name="text_input" class="text_input"> <?php echo $note_text; ?> </div>  
+
+
+                  <!-- Костыль -->
+                    <input type="hidden" id="hidden_note_text" name="note_text">
+                    <input type="text" name="note_id" value="<?php echo $_GET['note_id']; ?>" style="display: none;">
+                    
+                    <div contenteditable="true" id="text_input_edit_note" name="text_input" class="text_input"> <?php echo $note_text; ?> </div>  
                   </div>
 
                   <div class="choose_folder">

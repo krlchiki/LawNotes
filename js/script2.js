@@ -1,11 +1,10 @@
 
-// Тестовое поле 
 
 let optionsButtons = document.querySelectorAll('.option_button');
 let advancedOptionButton = document.querySelectorAll(".adv_option_button");
 let fontName = document.getElementById("fontName");
 let fontSizeRef = document.getElementById("fontSize");
-let writingArea = document.getElementById("text_input");
+let writingArea = document.getElementById("text_input_edit_note");
 let alignButtons = document.querySelectorAll(".align");
 let spacingButtons = document.querySelectorAll(".spacing");
 let formatButtons = document.querySelectorAll(".format");
@@ -79,21 +78,13 @@ const highlighterRemover = (className) => {
   });
 };
 
-window.onload = initializer();
+window.onload = initializer(); 
 
-//Сохранение введенного текста в инпут при создании
 
-document.getElementById('create_note_btn').addEventListener('click', function() {
+document.getElementById('edit_note_form').addEventListener('submit', function(event) {
   // Получаем содержимое элемента с атрибутом contenteditable
-  var editedContent = document.getElementById('text_input_create_note').innerHTML;
+  var editedContent = document.getElementById('text_input_edit_note').innerHTML;
 
   // Помещаем содержимое в скрытое поле формы
-  var hiddenField = document.createElement('input');
-  hiddenField.type = 'hidden';
-  hiddenField.name = 'note_text';
-  hiddenField.value = editedContent;
-  
-  document.getElementById('add_note_form').appendChild(hiddenField);
+  document.getElementById('hidden_note_text').value = editedContent;
 });
-
-

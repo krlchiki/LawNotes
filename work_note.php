@@ -7,7 +7,7 @@
     $user = current_user();
 
     $id_user= $_SESSION['user']['id'];
-
+ 
 ?>
 
 <!DOCTYPE html>

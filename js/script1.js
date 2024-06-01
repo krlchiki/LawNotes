@@ -20,13 +20,13 @@ window.addEventListener('keydown', function(e) {
 }) ;
 
 
-// Тестовое поле 
+
 
 let optionsButtons = document.querySelectorAll('.option_button');
 let advancedOptionButton = document.querySelectorAll(".adv_option_button");
 let fontName = document.getElementById("fontName");
 let fontSizeRef = document.getElementById("fontSize");
-let writingArea = document.getElementById("text_input");
+let writingArea = document.getElementById("text_input_create_note");
 let alignButtons = document.querySelectorAll(".align");
 let spacingButtons = document.querySelectorAll(".spacing");
 let formatButtons = document.querySelectorAll(".format");
@@ -114,7 +114,7 @@ document.getElementById('create_note_btn').addEventListener('click', function() 
   var hiddenField = document.createElement('input');
   hiddenField.type = 'hidden';
   hiddenField.name = 'note_text';
-  hiddenField.value = editedContent;
+  hiddenField.value = editedContent; 
   
   document.getElementById('add_note_form').appendChild(hiddenField);
 });

@@ -19,7 +19,7 @@
           ':note_id' => $note_id,
       ];
       $stmt = $pdo->prepare($query);
-      try{
+      try{ 
         $stmt -> execute($params);
       }catch (\Exception $e){
         die($e->getMessage());

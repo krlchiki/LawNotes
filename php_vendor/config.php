@@ -1,6 +1,6 @@
 <?php
 
-const DB_HOST = 'localhost';
+const DB_HOST = 'MySQL-8.0';
 const DB_PORT = '3306';
 const DB_NAME = 'users';
 const DB_USERNAME = 'root';
