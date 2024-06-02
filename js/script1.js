@@ -124,21 +124,40 @@ document.getElementById('create_note_btn').addEventListener('click', function() 
 //Счетчик количества символов в поле для создания заметки
 
 var countText = document.getElementById('text_input_create_note');
+
+var countTitle = document.getElementById('note_title_input');
+
 var result = document.getElementById('result');
+
+var submitButton = document.getElementById('create_note_btn');
 var limit = 400;
 
 result.textContent = countText.textContent.length + "/" + limit;
 
+// Ограничения для заголовка 
+
+countTitle.addEventListener("input", function() {
+   var titleLength = countTitle.value.length;
+
+  if( titleLength === 0) {
+    countTitle.style.borderColor = "red";
+    submitButton.setAttribute('disabled', '');
+  }else{
+    countTitle.style.borderColor = "black";
+    submitButton.removeAttribute('disabled');
+  }
+});
+// Ограничения для текста
+
 countText.addEventListener("input", function() {
   var textLength = countText.textContent.length;
-  var submitButton = document.getElementById('create_note_btn');
+  
   result.textContent = textLength + "/" + limit;
 
-  if(textLength >= limit) {
+  if(textLength >= limit || textLength === 0) {
+
     countText.style.borderColor = "red";
     result.style.color = "red";
-    submitButton.setAttribute('disabled', '');
-  }else if(textLength === 0){
     submitButton.setAttribute('disabled', '');
   }
   else{
@@ -218,3 +237,4 @@ SideFolder.addEventListener('click', function() {
     }
   }
 });
+

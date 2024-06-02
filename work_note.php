@@ -152,7 +152,7 @@
                 <form action="../php_vendor/actions/add_note.php" id="add_note_form" method="POST">
 
                   <div class="note_title">
-                    <input type="text" name="note_title" class="note_title_input" placeholder="Заголовок">
+                    <input type="text" id="note_title_input" name="note_title" class="note_title_input" placeholder="Заголовок" value="Заголовок" maxlength="50">
                   </div>
 
                   <div class="note_text_box">
@@ -227,7 +227,6 @@
                   <div class="choose_folder">
                     
                     <select name="folder" id="folreds">
-                      <option value="Все задачи">Все задачи</option>
                       <option value="Главные задачи">Главные задачи</option>
                       <option value="Планируемые задачи">Планируемые задачи</option>
                       <option value="Ежедневные задачи">Ежедневные задачи</option>

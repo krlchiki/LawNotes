@@ -127,7 +127,6 @@
                   <div class="choose_folder">
                     
                     <select name="folder" id="folreds"  value="<?php echo $folder; ?>">
-                      <option value="Все задачи">Все задачи</option>
                       <option value="Главные задачи">Главные задачи</option>
                       <option value="Планируемые задачи">Планируемые задачи</option>
                       <option value="Ежедневные задачи">Ежедневные задачи</option>
