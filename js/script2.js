@@ -125,6 +125,8 @@ countText.addEventListener("input", function() {
     countText.style.borderColor = "red";
     result.style.color = "red";
     submitButton.setAttribute('disabled', '');
+  }else if(textLength === 0){
+    submitButton.setAttribute('disabled', '');
   }else{
     countText.style.borderColor = "black";
     result.style.color = "black";

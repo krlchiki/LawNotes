@@ -138,9 +138,83 @@ countText.addEventListener("input", function() {
     countText.style.borderColor = "red";
     result.style.color = "red";
     submitButton.setAttribute('disabled', '');
-  }else{
+  }else if(textLength === 0){
+    submitButton.setAttribute('disabled', '');
+  }
+  else{
     countText.style.borderColor = "black";
     result.style.color = "black";
     submitButton.removeAttribute('disabled');
+  }
+});
+
+
+// Работа с папками
+
+var DealyFolder = document.getElementById('deaily_folder');
+var AllFolder = document.getElementById('all_folder');
+var MainFolder = document.getElementById('main_folder');  
+var PlanFolder = document.getElementById('plan_folder');  
+var SideFolder = document.getElementById('side_folder');  
+const allNotes = document.getElementsByClassName("note_block");
+
+
+AllFolder.addEventListener('click', function() {
+  for (var i = 0; i < allNotes.length; i++) {
+    var div = allNotes[i];
+    div.style.display = "block"; 
+  }
+});
+
+DealyFolder.addEventListener('click', function() {
+
+  for (var i = 0; i < allNotes.length; i++) {
+    var div = allNotes[i];
+    div.style.display = "block"; 
+    
+    // Проверяем id каждого div
+    if (div.id !== "Ежедневные задачи") {
+        // Если id отличается, скрываем div
+        div.style.display = "none";
+    }
+}
+});
+
+MainFolder.addEventListener('click', function() {
+  for (var i = 0; i < allNotes.length; i++) {
+    var div = allNotes[i];
+    div.style.display = "block";
+
+    // Проверяем id каждого div
+    if (div.id !== "Главные задачи") {
+      // Если id отличается, скрываем div
+      div.style.display = "none";
+    }
+  }
+});
+
+PlanFolder.addEventListener('click', function() {
+  for (var i = 0; i < allNotes.length; i++) {
+    var div = allNotes[i];
+    div.style.display = "block";
+
+    // Проверяем id каждого div
+    if (div.id !== "Планируемые задачи") {
+      // Если id отличается, скрываем div
+      div.style.display = "none";
+    }
+  }
+});
+
+SideFolder.addEventListener('click', function() {
+  for (var i = 0; i < allNotes.length; i++) {
+    var div = allNotes[i];
+    div.style.display = "block";
+
+    // Проверяем id каждого div
+    if (div.id !== "Второстепенные задачи") {
+      // Если id отличается, скрываем div
+      div.style.display = "none";
+    }
   }
 });

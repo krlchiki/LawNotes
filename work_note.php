@@ -44,11 +44,11 @@
           <div class="folders_title">
             <p5 >Папки</p5>
           </div>
-          <div class="main_notes work_space_item"><img class="svg_icon" src="/svg/all.svg" alt=""> <button type="button" class="folders_btn" id="folders_btn">Все задачи</button > </div>
-          <div class="main_notes work_space_item"><img class="svg_icon" src="/svg/main.svg" alt=""> <button type="button" class="folders_btn" id="folders_btn">Главные задачи</button > </div>
-          <div class="plane_notes work_space_item"><img class="svg_icon" src="/svg/Planning.svg" alt=""><button type="button" class="folders_btn" id="folders_btn">Планируемые задачи</button > </div>
-          <div class="daily_notes work_space_item"><img class="svg_icon" src="/svg/Daily.svg" alt=""><button type="button" class="folders_btn" id="folders_btn">Ежедневные задачи</button ></a></div>
-          <div class="side_notes work_space_item"><img class="svg_icon" src="/svg/side.svg" alt=""><button type="button" class="folders_btn" id="folders_btn">Второстепенные задачи</button ></div>
+          <div class="main_notes work_space_item"><img class="svg_icon" src="/svg/all.svg" alt=""> <button type="button" class="folders_btn" id="all_folder">Все задачи</button > </div>
+          <div class="main_notes work_space_item"><img class="svg_icon" src="/svg/main.svg" alt=""> <button type="button" class="folders_btn" id="main_folder">Главные задачи</button > </div>
+          <div class="plane_notes work_space_item"><img class="svg_icon" src="/svg/Planning.svg" alt=""><button type="button" class="folders_btn" id="plan_folder">Планируемые задачи</button > </div>
+          <div class="daily_notes work_space_item"><img class="svg_icon" src="/svg/Daily.svg" alt=""><button type="button" class="folders_btn" id="deaily_folder">Ежедневные задачи</button ></a></div>
+          <div class="side_notes work_space_item"><img class="svg_icon" src="/svg/side.svg" alt=""><button type="button" class="folders_btn" id="side_folder">Второстепенные задачи</button ></div>
         </div>
         <div class="profile_info">
         <div class="profile_info_items">
@@ -77,7 +77,7 @@
 
           <!-- Заметка -->
           <?php foreach (get_notes($id_user) as $note):   ?>
-            <div class="note_block">
+            <div class="note_block" id="<?= $note['note_folder'] ?>">
               <div class="note_items">
                 <div class="note_items_header">
                   <div class="note_type">
@@ -124,12 +124,12 @@
               </div>
             </div>   
               <div class="hidden">     
-                <input class="hidden" name="note_id" value="<?= $note['id'] ?>" />
-                <input class="hidden" name="user_id" value="<?= $note['user_id'] ?>" />
-                <input class="hidden" name="note_title" value="<?= $note['note_title'] ?>" />
-                <input class="hidden" name="note_text" value="<?= $note['note_text'] ?>" />
-                <input class="hidden" name="note_folder" value="<?= $note['note_folder'] ?>" />
-                <input class="hidden" name="note_date" value="<?= $note['note_date'] ?>" />
+                <input class="hidden" name="note_id" id="note_id" value="<?= $note['id'] ?>" />
+                <input class="hidden" name="user_id" id="user_id" value="<?= $note['user_id'] ?>" />
+                <input class="hidden" name="note_title" id="note_title" value="<?= $note['note_title'] ?>" />
+                <input class="hidden" name="note_text" id="note_text" value="<?= $note['note_text'] ?>" />
+                <input class="hidden" name="note_folder" id ="note_folder" value="<?= $note['note_folder'] ?>" />
+                <input class="hidden" name="note_date" id="note_date" value="<?= $note['note_date'] ?>" />
               </div>
             </form>
 

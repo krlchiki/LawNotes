@@ -494,6 +494,23 @@ input[type="color"]::-webkit-color-swatch{
 .resultP{
   text-align: right;
 }
+.note_title_input{
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #dddddd;
+  width: 350px;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+select{
+  border-radius: 8px;
+  border: 1px solid #dddddd;
+}
+
+.choose_folder{
+  margin-bottom: 25px;
+}
 
 .text_input{
   padding: 20px;
