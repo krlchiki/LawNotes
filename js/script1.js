@@ -17,10 +17,9 @@ window.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     modalCreateNote.classList.remove('open');
   }
-}) ;
+}) ; 
 
-
-
+//Текстовое поле для создания заметки
 
 let optionsButtons = document.querySelectorAll('.option_button');
 let advancedOptionButton = document.querySelectorAll(".adv_option_button");
@@ -111,10 +110,10 @@ window.onload = initializer();
 
 document.getElementById('create_note_btn').addEventListener('click', function() {
   // Получаем содержимое элемента с атрибутом contenteditable
-  var editedContent = document.getElementById('text_input_create_note').innerHTML;
+  let editedContent = document.getElementById('text_input_create_note').innerHTML;
 
   // Помещаем содержимое в скрытое поле формы
-  var hiddenField = document.createElement('input');
+  let hiddenField = document.createElement('input');
   hiddenField.type = 'hidden';
   hiddenField.name = 'note_text';
   hiddenField.value = editedContent; 
@@ -122,4 +121,26 @@ document.getElementById('create_note_btn').addEventListener('click', function() 
   document.getElementById('add_note_form').appendChild(hiddenField);
 });
 
+//Счетчик количества символов в поле для создания заметки
 
+var countText = document.getElementById('text_input_create_note');
+var result = document.getElementById('result');
+var limit = 400;
+
+result.textContent = countText.textContent.length + "/" + limit;
+
+countText.addEventListener("input", function() {
+  var textLength = countText.textContent.length;
+  var submitButton = document.getElementById('create_note_btn');
+  result.textContent = textLength + "/" + limit;
+
+  if(textLength >= limit) {
+    countText.style.borderColor = "red";
+    result.style.color = "red";
+    submitButton.setAttribute('disabled', '');
+  }else{
+    countText.style.borderColor = "black";
+    result.style.color = "black";
+    submitButton.removeAttribute('disabled');
+  }
+});

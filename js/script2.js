@@ -1,4 +1,15 @@
 
+var closeBtn = document.getElementById('edit_modal_close_btn');
+closeBtn.addEventListener('click', function() {
+  window.history.back();
+});
+
+window.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    window.history.back();
+  }
+}) ;
+
 
 let optionsButtons = document.querySelectorAll('.option_button');
 let advancedOptionButton = document.querySelectorAll(".adv_option_button");
@@ -93,4 +104,30 @@ document.getElementById('edit_note_form').addEventListener('submit', function(ev
 
   // Помещаем содержимое в скрытое поле формы
   document.getElementById('hidden_note_text').value = editedContent;
+});
+
+//Счетчик количества символов в поле для создания заметки
+
+
+
+var countText = document.getElementById('text_input_edit_note');
+var result = document.getElementById('result');
+var limit = 400;
+
+result.textContent = countText.textContent.length + "/" + limit;
+
+countText.addEventListener("input", function() {
+  var textLength = countText.textContent.length;
+  var submitButton = document.getElementById('edit_note_btn');
+  result.textContent = textLength + "/" + limit;
+
+  if(textLength >= limit) {
+    countText.style.borderColor = "red";
+    result.style.color = "red";
+    submitButton.setAttribute('disabled', '');
+  }else{
+    countText.style.borderColor = "black";
+    result.style.color = "black";
+    submitButton.removeAttribute('disabled');
+  }
 });

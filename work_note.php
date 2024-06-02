@@ -110,7 +110,7 @@
                   <?= $note['note_title']?>
                 </div>
                 <div class="note_text">
-                  <?= substr($note['note_text'], 0, 270 ) . '...'?>
+                  <?= substr($note['note_text'], 0, 200 ) . '...'?>
                 </div>
                 <div class="note_items_footer">
                   <div class="note_folder">
@@ -146,7 +146,7 @@
                 <path d="m16.042969 311.097656c-4.09375 0-8.191407-1.554687-11.304688-4.691406-6.25-6.25-6.25-16.386719 0-22.636719l279.058594-279.058593c6.253906-6.253907 16.386719-6.253907 22.636719 0 6.25 6.25 6.25 16.382812 0 22.632812l-279.0625 279.0625c-3.136719 3.136719-7.230469 4.691406-11.328125 4.691406zm0 0"/>
                 <path d="m295.125 311.097656c-4.09375 0-8.191406-1.554687-11.304688-4.691406l-279.082031-279.082031c-6.25-6.253907-6.25-16.386719 0-22.636719s16.382813-6.25 22.632813 0l279.0625 279.082031c6.25 6.25 6.25 16.386719 0 22.636719-3.136719 3.136719-7.230469 4.691406-11.308594 4.691406zm0 0"/>
               </svg>
-            </button >
+            </button>
             <h2>Новая доска</h2>
               <div class="form_box">
                 <form action="../php_vendor/actions/add_note.php" id="add_note_form" method="POST">
@@ -218,7 +218,10 @@
                         <label for="backColor">Цвет фона</label>
                       </div>
                     </div>
-                    <div contenteditable="true" id="text_input_create_note" name="text_input" class="text_input">Ваш текст</div>  
+                    <div contenteditable="true" id="text_input_create_note" name="text_input" class="text_input">Ваш текст</div> 
+                    <div>
+                      <p id="result" class="resultP"></p>
+                    </div> 
                   </div>
 
                   <div class="choose_folder">
