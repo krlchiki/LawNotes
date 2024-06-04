@@ -142,7 +142,7 @@ countTitle.addEventListener("input", function() {
   if( titleLength === 0) {
     countTitle.style.borderColor = "red";
     submitButton.setAttribute('disabled', '');
-  }else{
+  }else{ 
     countTitle.style.borderColor = "black";
     submitButton.removeAttribute('disabled');
   }
@@ -176,7 +176,6 @@ var MainFolder = document.getElementById('main_folder');
 var PlanFolder = document.getElementById('plan_folder');  
 var SideFolder = document.getElementById('side_folder');  
 const allNotes = document.getElementsByClassName("note_block");
-
 
 AllFolder.addEventListener('click', function() {
   for (var i = 0; i < allNotes.length; i++) {
@@ -238,3 +237,76 @@ SideFolder.addEventListener('click', function() {
   }
 });
 
+function search() {
+  // Получаем значение из поля ввода
+  let searchText = document.getElementById('search').value.toLowerCase();
+
+  // Получаем все блоки заметок
+  let noteBlocks = document.querySelectorAll('.note_block');
+
+  // Перебираем каждый блок заметки
+  noteBlocks.forEach(noteBlock => {
+      // Получаем текст заголовка и содержимого
+      let title = noteBlock.querySelector('.note_title').textContent.toLowerCase();
+      let text = noteBlock.querySelector('.note_text').textContent.toLowerCase();
+
+      // Проверяем, содержит ли заголовок или содержимое искомый текст
+      if (title.includes(searchText) || text.includes(searchText)) {
+          // Если содержит, убираем класс hidden
+          noteBlock.classList.remove('hidden');
+      } else {
+          // Если не содержит, добавляем класс hidden
+          noteBlock.classList.add('hidden');
+      }
+  });
+}
+
+function filterRecent() {
+  // Получаем текущее время
+  let now = new Date();
+  // Получаем время 30 минут назад
+  let thirtyMinutesAgo = new Date(now.getTime() - 30 * 60 * 1000);
+
+  // Получаем все блоки заметок
+  let noteBlocks = document.querySelectorAll('.note_block');
+
+  // Перебираем каждый блок заметки
+  noteBlocks.forEach(noteBlock => {
+      // Получаем время изменения заметки
+      let noteDateText = noteBlock.querySelector('.note_date').innerHTML;
+      let noteDate = parseDate(noteDateText);
+      console.log (noteDateText);
+      console.log(noteDate);
+      // Проверяем, была ли заметка изменена в последние 30 минут
+      if (noteDate.getTime() >= thirtyMinutesAgo.getTime() && noteDate.getTime() <= now.getTime()) {
+        // Если была изменена, убираем класс hidden
+        noteBlock.classList.remove('hidden');
+      } else {
+        // Если не была изменена, добавляем класс hidden
+        noteBlock.classList.add('hidden');
+      }
+  });
+}
+// Функция для преобразования строки даты в объект Date
+function parseDate(dateString) {
+  let parts = dateString.match(/(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2}):(\d{2})/);
+  return new Date(parts[1], parts[2] - 1, parts[3], parts[4], parts[5], parts[6]);
+}
+
+
+function toggleInactiveNotes() {
+  // Получаем все блоки заметок
+  let noteBlocks = document.querySelectorAll('.note_block');
+
+  // Перебираем каждый блок заметки
+  noteBlocks.forEach(noteBlock => {
+      // Получаем элемент с id note_active
+      let noteActiveElement = noteBlock.querySelector('#note_active');
+
+      // Проверяем, если текст в элементе "Заметка неактивна"
+      if (noteActiveElement && noteActiveElement.textContent.includes('Заметка неактивна')) {
+          // Если текст соответствует, переключаем класс hidden
+          noteBlock.classList.toggle('hidden');
+      }
+  });
+}

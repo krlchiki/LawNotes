@@ -502,15 +502,18 @@ input[type="color"]::-webkit-color-swatch{
   margin-bottom: 15px;
   outline: none;
 }
-
+.active-field{
+  margin-bottom: 25px; 
+  display:flex; 
+  flex-direction:row;
+  align-items: center;  
+  gap: 15px;
+}
 select{
   border-radius: 8px;
   border: 1px solid #dddddd;
 }
 
-.choose_folder{
-  margin-bottom: 25px;
-}
 
 .text_input{
   padding: 20px;
@@ -530,11 +533,23 @@ select{
   display: flex;
   flex-direction: row;
   align-items: center;
-
   gap: 18px;
-  margin-top: 18px;
 }
 
 #folreds{
   height: 35px;
+}
+
+.note_active{
+  color: #11ac2b;
+}
+
+.note_inactive{
+  color: #9e0b0b;
+}
+
+.note_active , .note_inactive{
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 16px;
 }

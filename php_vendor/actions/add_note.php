@@ -6,6 +6,7 @@
     $note_title = $_POST['note_title'] ?? null;
     $note_text = $_POST['note_text'] ?? null;
     $folder = $_POST['folder'] ?? null;
+    $active = $_POST['actile'] ?? null;
     $note_date = date("Y-m-d H:i:s");
 
 
@@ -27,13 +28,14 @@
 
     $pdo = get_PDO();
 
-    $query = "INSERT INTO note_info (user_id, note_title, note_text, note_date, note_folder) VALUES (:user_id, :note_title, :note_text, :note_date,:note_folder)";
+    $query = "INSERT INTO note_info (user_id, note_title, note_text, note_date, note_folder, is_active) VALUES (:user_id, :note_title, :note_text, :note_date,:note_folder, :active)";
     $params = [
         'user_id' => $user_id,
         'note_title' => $note_title,
         'note_text' => $note_text,
         'note_date' => $note_date,
-        'note_folder' => $folder
+        'note_folder' => $folder,
+        'active' => $active
     ];
 
     $stmt = $pdo->prepare($query);

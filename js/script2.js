@@ -108,26 +108,40 @@ document.getElementById('edit_note_form').addEventListener('submit', function(ev
 
 //Счетчик количества символов в поле для создания заметки
 
-
-
+var countTitle = document.getElementById('note_title_edit');
+var submitButton = document.getElementById('edit_note_btn');
 var countText = document.getElementById('text_input_edit_note');
 var result = document.getElementById('result');
 var limit = 400;
 
+// Ограничения для заголовка 
+
+countTitle.addEventListener("input", function() {
+  var textLength = countText.textContent.length;
+  var titleLength = countTitle.value.length;
+
+ if( titleLength === 0 || textLength === 0) {
+   countTitle.style.borderColor = "red";
+   submitButton.setAttribute('disabled', '');
+ }else{ 
+   countTitle.style.borderColor = "black";
+   submitButton.removeAttribute('disabled');
+ }
+});
+
 result.textContent = countText.textContent.length + "/" + limit;
 
-countText.addEventListener("input", function() {
+countText.addEventListener("input", function() { 
+  var titleLength = countTitle.value.length;
   var textLength = countText.textContent.length;
-  var submitButton = document.getElementById('edit_note_btn');
   result.textContent = textLength + "/" + limit;
 
-  if(textLength >= limit) {
+  if(textLength >= limit || textLength === 0 || titleLength === 0) {
     countText.style.borderColor = "red";
     result.style.color = "red";
     submitButton.setAttribute('disabled', '');
-  }else if(textLength === 0){
-    submitButton.setAttribute('disabled', '');
-  }else{
+  }
+  else{
     countText.style.borderColor = "black";
     result.style.color = "black";
     submitButton.removeAttribute('disabled');

@@ -16,6 +16,7 @@
     $note_text = $nested_array['note_text'];
     $note_title = $nested_array['note_title'];
     $folder = $nested_array['note_folder'];
+    $active = $nested_array['is_active'];
 ?> 
 
 <!DOCTYPE html>
@@ -45,7 +46,7 @@
                 <form action="../php_vendor/actions/edit_note.php" id="edit_note_form" method="POST">
 
                   <div class="note_title">
-                    <input type="text" name="note_title" class="note_title_input" placeholder="Заголовок"
+                    <input type="text" name="note_title" id="note_title_edit" class="note_title_input" placeholder="Заголовок"
                     value="<?php echo $note_title; ?>">
                   </div>
 
@@ -125,14 +126,20 @@
                   </div>
 
                   <div class="choose_folder">
-                    
-                    <select name="folder" id="folreds"  value="<?php echo $folder; ?>">
-                      <option value="Главные задачи">Главные задачи</option>
-                      <option value="Планируемые задачи">Планируемые задачи</option>
-                      <option value="Ежедневные задачи">Ежедневные задачи</option>
-                      <option value="Второстепенные задачи">Второстепенные задачи</option>
+                  <p>Папка:</p>
+                    <select name="folder" id="folreds">
+                      <option value="Главные задачи" <?php if ($folder == 'Главные задачи') echo 'selected'; ?>>Главные задачи</option>
+                      <option value="Планируемые задачи" <?php if ($folder == 'Планируемые задачи') echo 'selected'; ?> >Планируемые задачи</option>
+                      <option value="Ежедневные задачи" <?php if ($folder == 'Ежедневные задачи') echo 'selected'; ?>>Ежедневные задачи</option>
+                      <option value="Второстепенные задачи" <?php if ($folder == 'Второстепенные задачи') echo 'selected'; ?> >Второстепенные задачи</option>
                     </select>
 
+                  </div>
+
+                  <div class="active-field">
+                    <h4>Активность: </h4>
+                    <input type="radio" id="active" name="actile" value="1"<?php if ($active == 1) echo 'checked'; ?>> Активна
+                    <input type="radio" id="active" name="actile" value="0"<?php if ($active == 0) echo 'checked'; ?>> Неактивна
                   </div>
                   
                   <div>

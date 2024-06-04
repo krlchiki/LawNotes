@@ -27,16 +27,16 @@
   <div class="wrapper">
     <div class="left_bar">
       <div class="header_left">
-        <div class="logo"><a href="work_note.html">LawNotes</a></div>
+        <div class="logo"><a href="work_note.php">LawNotes</a></div>
       </div>
       <div class="main_menu">
         <div class="main_menu_items">
           <div class="search_container">
             <input type="text" class="search menu_item menu_input" id="search" placeholder="Поиск">
-            <button type="button" class="button_search" id="button_search">Искать</button >
+            <button onclick="search()" type="button" class="button_search" id="button_search">Искать</button >
           </div>
-          <button type="button" class="active_notes menu_item"> <img class="svg_icon_menu" src="../svg/active.svg">Активные</button >
-          <button type="button" class="active_notes menu_item"> <img class="svg_icon_menu" src="../svg/time.svg">Недавно изменные</button >
+          <button type="button" onclick="toggleInactiveNotes()" id="active_btn" class="active_notes menu_item"> <img class="svg_icon_menu" src="../svg/active.svg">Активные</button >
+          <button onclick="filterRecent()" type="button" class="active_notes menu_item"> <img class="svg_icon_menu" src="../svg/time.svg">Недавно изменные</button >
         </div>
       </div>
       <div class="left_bar_container">  
@@ -70,7 +70,6 @@
         <div class="navbar_right">
           <div class="navbar_right_items">
             <button type="button" class="open_modal_window" name="open_modal_window" id="open_modal_window">+ Новая доска</button >
-            <input type="date" class="date">
           </div>  
         </div>
         <div class="work_space">
@@ -81,7 +80,11 @@
               <div class="note_items">
                 <div class="note_items_header">
                   <div class="note_type">
-                    Заметка
+                  <?php if ($note['is_active'] == 1) { ?>
+                      <div id="note_active" class="note_active">Заметка активна</div>
+                    <?php } else { ?>
+                      <div id="note_active" class="note_inactive">Заметка неактивна</div>
+                    <?php } ?>
                   </div>
 
                   <form class="note_form" action="../php_vendor/actions/note_delete.php" method="POST"> 
@@ -225,14 +228,20 @@
                   </div>
 
                   <div class="choose_folder">
-                    
+                    <h4>Папка:</h4>
                     <select name="folder" id="folreds">
                       <option value="Главные задачи">Главные задачи</option>
                       <option value="Планируемые задачи">Планируемые задачи</option>
                       <option value="Ежедневные задачи">Ежедневные задачи</option>
                       <option value="Второстепенные задачи">Второстепенные задачи</option>
                     </select>
+                   
+                  </div>
 
+                  <div class="active-field">
+                    <h4>Активность:</h4>
+                    <input type="radio" id="active" name="actile" value="1" checked> Активна
+                    <input type="radio" id="active" name="actile" value="0"> Неактивна
                   </div>
                   
                   <div>
